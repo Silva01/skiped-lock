@@ -13,6 +13,8 @@ public class User {
     @Column(name = "name")
     private String name;
 
+    private boolean status;
+
     public Long getId() {
         return id;
     }
@@ -27,5 +29,13 @@ public class User {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 }

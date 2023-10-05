@@ -16,5 +16,5 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     @Lock(LockModeType.PESSIMISTIC_WRITE)
     @QueryHints({@QueryHint(name = AvailableSettings.JPA_LOCK_TIMEOUT, value = LockOptions.SKIP_LOCKED + "")})
-    List<User> findByName(String name, Pageable page);
+    List<User> findByStatus(Boolean status, Pageable page);
 }

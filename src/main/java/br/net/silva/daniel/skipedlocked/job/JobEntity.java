@@ -18,11 +18,11 @@ public class JobEntity {
     @Autowired
     private EntityManager entityManager;
 
-    @Scheduled(cron = "0/3 * * * * *")
+//    @Scheduled(cron = "0/4 * * * * *")
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public void execute() {
 
-        List<User> users = entityManager.createQuery("select u from User u where u.name = 'daniel'", User.class)
+        List<User> users = entityManager.createQuery("select u from User u where u.status = true", User.class)
                 .setLockMode(LockModeType.PESSIMISTIC_WRITE)
                 .setMaxResults(1)
                 .setHint("javax.persistence.lock.timeout", LockOptions.SKIP_LOCKED)

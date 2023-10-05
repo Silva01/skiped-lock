@@ -31,31 +31,11 @@ public class Job {
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public void execute() throws InterruptedException {
         System.out.println("Job executed!");
-        List<User> usuarios = repository.findByName("daniel", PageRequest.of(0, 1));
+        List<User> usuarios = repository.findByStatus(true, PageRequest.of(0, 1));
         User user = usuarios.get(0);
         user.setName("daniel 2");
         repository.save(user);
         Thread.sleep(10000);
 
-//        List<User> users = entityManager.createQuery("select u from User u where u.name = 'daniel'", User.class)
-//                .setLockMode(LockModeType.PESSIMISTIC_WRITE)
-//                .setMaxResults(1)
-//                .setHint("javax.persistence.lock.timeout", LockOptions.SKIP_LOCKED)
-//                .getResultList();
-//
-//        System.out.println("Trabalhando ........");
-//
-//        users.forEach(user -> {
-//            var user2 = new User();
-//            user2.setName("Fulano de Tal");
-//            entityManager2.persist(user2);
-//            entityManager2.flush();
-//            System.out.println("Deletando ........");
-//            user.setName("daniel 2");
-//            entityManager2.persist(user);
-//            System.out.println("Pronto ........");
-//            entityManager2.flush();
-//        });
-//        System.out.println("Finalizado ........");
     }
 }
