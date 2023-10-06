@@ -30,7 +30,7 @@ public class Job {
 
 
 
-    @Scheduled(cron = "0/3 * * * * *")
+//    @Scheduled(cron = "0/3 * * * * *")
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public void execute() throws InterruptedException {
 
